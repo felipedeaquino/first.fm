@@ -33,10 +33,12 @@ def seekAndDestroy(start, end):
     
 def tweet(listArtists):
     strArtists = str(listArtists)
-    strArtists = strArtists.replace("'",'') #passo 1 limpando string
-    strArtists = strArtists.replace("[",'') #passo 2 limpando string
-    strArtists = strArtists.replace("]",'') #passo 3 limpando string
-    spaces = strArtists.replace("  ", ' ') #passo 4 limpando string
+    strArtists = strArtists.replace("' ",'') #passo 1 limpando string
+    strArtists = strArtists.replace("',",',') #passo 2 limpando string
+    strArtists = strArtists.replace("[",'') #passo 3 limpando string
+    strArtists = strArtists.replace("]",'') #passo 4 limpando string
+    strArtists = strArtists.replace('"','') #passo 5 limpando string
+    spaces = strArtists.replace("  ", ' ') #passo 6 limpando string
     a = len(inputUser) #contando caracteres do nickname
     b = len("'s top  artists this week: .") #contando caracteres da frase padrão
     c = a + b + len(spaces) #soma dos caracteres p verificar se cabe num tuíte
@@ -45,9 +47,9 @@ def tweet(listArtists):
         tweet(listArtists)
     else:
         tweet = (str(inputUser) + "'s top " + str(len(listArtists)) + " artists this week: " + spaces + ".") #output que quero tuitar
+        tweet = tweet.replace(" '",' ') #passo 7 limpando string
+        tweet = tweet.replace("'.",'.') #passo 8 limpando string
         print(tweet)
 
 
 listArtists = seekAndDestroy(startDate, endDate)
- 
-
